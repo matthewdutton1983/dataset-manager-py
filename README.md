@@ -6,7 +6,7 @@ Python wrapper over the HuggingFace datasets library that makes it easier to loa
 # Import the DatasetManager class
 from dataset.manager import DatasetManager
 
-# Instantiate a new HuggingFaceDatasetLoader object
+# Instantiate a new DataManager object
 manager = DatasetManager()
 
 # Download a dataset from the HuggingFace Hub
