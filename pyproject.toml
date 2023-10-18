@@ -21,4 +21,4 @@ classifiers = [
 ]
 
 [project.dependencies]
-datasets = "^2.14.5"
+requires = [datasets^2.14.5"]
