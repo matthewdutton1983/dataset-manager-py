@@ -67,4 +67,27 @@ class DatasetManager:
             format=archive_format,
             root_dir=dataset_dir
         )
+    
+
+    def load_from_archive(self, archive_path: str, extract_to: str) -> DatasetDict:
+        """Extracts a dataset archive and loads the dataset from disk.
         
+        Args:
+            archive_path (str): Path to the dataset archive (zip or tar).
+            extract_to (str): Directory where the archive will be extracted.
+
+        Returns:
+            DatasetDict: The loaded dataset.
+
+        Raises:
+            ValueError: If the archive format is not recognized.
+        """
+        if archive_path.endswith(".zip"):
+            shutil.unpack_archive(archive_path, extract_to, format="zip")
+        elif archive_path.endswith(".tar"):
+            shutil.unpack_archive(archive_path, extract_to, format="tar")
+        else:
+            raise ValueError("Unsupported archive format. Use 'zip' or 'tar'.")
+
+        self.dataset = load_from_disk(extract_to)
+        return self.dataset
