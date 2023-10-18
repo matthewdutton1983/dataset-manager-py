@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Python wrapper over the HuggingFace datasets library that makes it easier to load and convert datasets."
 readme = "README.md"
 authors = [
-  {name="Matthew Dutton", email="matthewdutton1983@hotmail.co.uk"},
+  { name="Matthew Dutton", email="matthewdutton1983@hotmail.co.uk" },
 ]
 license = { file = "LICENSE.txt" }
 classifiers = [
