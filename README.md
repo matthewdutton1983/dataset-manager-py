@@ -1,13 +1,13 @@
-# huggingface-dataloader-py
+# dataset-manager-py
 
 Python wrapper over the HuggingFace datasets library that makes it easier to load and convert datasets.
 
 ```python
-# Import the HuggingFaceDatasetLoader class
-from dataloaders.huggingface import HuggingFaceDatasetLoader
+# Import the DatasetManager class
+from dataset.manager import DatasetManager
 
 # Instantiate a new HuggingFaceDatasetLoader object
-loader = HuggingFaceDatasetLoader()
+loader = DatasetManager()
 
 # Download a dataset from the HuggingFace Hub
 dataset = loader.load_from_hub(dataset_name="cuad")
