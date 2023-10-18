@@ -1,26 +1,54 @@
 import shutil
-from datasets import load_dataset, load_from_disk
+from datasets import load_dataset, load_from_disk, DatasetDict
 
 
-class HuggingFaceDatasetLoader:
-    def __init__(self):
-        self.dataset = None
+class DatasetManager:
+    def __init__(self) -> None:
+        self.dataset: DatasetDict = None
 
-    def load_from_hub(self, dataset_name):
+
+    def load_from_hub(self, dataset_name: str) -> DatasetDict:
+        """Loads a dataset from HuggingFace's dataset hub.
+        
+        Args:
+            dataset_name (str): The name of the dataset to load.
+
+        Return:
+            DatasetDict: The loaded dataset.
+        """
         self.dataset = load_dataset(dataset_name)
         return self.dataset
     
-    def load_from_disk(self, path):
+
+    def load_from_disk(self, path: str) -> DatasetDict:
+        """Loads a dataset from disk.
+        
+        Args:
+            path (str): The path to the dataset on disk.
+
+        Returns:
+            DatasetDict: The loaded dataset.
+        """
         self.dataset = load_from_disk(path)
         return self.dataset
     
-    def save_to_disk(self, path):
+
+    def save_to_disk(self, path: str) -> None:
+        """Saves the current dataset to disk.
+        
+        Args:
+            path (str): The path where the dataset will be saved.
+
+        Raises:
+            ValueError: If no dataset is loaded.
+        """
         if self.dataset is not None:
             self.dataset.save_to_disk(path)
         else:
             raise ValueError("No dataset loaded, cannot save.")
         
-    def archive_dataset(self, dataset_dir, archive_path, archive_format="zip"):
+
+    def archive_dataset(self, dataset_dir: str, archive_path: str, archive_format: str = "zip") -> None:
         """Archives the dataset directory into a zip file or tarball.
         
         Args:
